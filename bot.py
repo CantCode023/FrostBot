@@ -2391,6 +2391,24 @@ async def phumor(ctx):
                 break
 
 
+@client.command(pass_context=True, name="sourcecode", aliases=["sc", "source"])
+async def sourcecode(ctx):
+    embed = discord.Embed(
+        title="Frost Bot Source Code",
+        description="Frost bot is now public in github and runs 24/7! (might be down because of bugs)",
+        timestamp=datetime.datetime.utcnow(),
+        color=discord.Color.from_rgb(255,179,0)
+    )
+    await ctx.send(
+        embed,
+        components=[
+            [
+                Button(label='<', style=ButtonStyle.URL, url="https://github.com/CantCode023/FrostBot")
+            ]
+        ]
+    )
+
+
 boredtype = None
 isbirthday = False
 whenborn,borning = None,False
