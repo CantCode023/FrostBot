@@ -23,7 +23,6 @@ import random
 import urllib.parse
 import datetime
 from discord_components import *
-from imgurpython import ImgurClient
 import traceback
 from colorama import Fore, Style
 
@@ -93,7 +92,7 @@ async def readURL(url):
 
 
 def Code(code):
-    return base64.b64decode(code)
+    return str(base64.b64decode(code))
 
 
 user_agent = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.159 Safari/537.36'
@@ -109,9 +108,6 @@ roblox = Client(Code(Codes.robloxtoken))
 
 # Discord Buttons
 button = DiscordComponents(client)
-
-# IMGur Client
-imgurclient = ImgurClient(Code(Codes.imgura), Code(Codes.imgurb))
 
 # Email Client
 server = smtplib.SMTP("smtp.gmail.com", 587)
