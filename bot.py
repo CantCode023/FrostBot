@@ -2376,10 +2376,10 @@ async def sourcecode(ctx):
         color=discord.Color.from_rgb(255,179,0)
     )
     await ctx.send(
-        embed,
+        embed=embed,
         components=[
             [
-                Button(label='<', style=ButtonStyle.URL, url="https://github.com/CantCode023/FrostBot")
+                Button(label='Source Code', style=ButtonStyle.URL, url="https://github.com/CantCode023/FrostBot")
             ]
         ]
     )
