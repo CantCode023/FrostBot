@@ -31,7 +31,6 @@ from colorama import Fore, Style
 import chances
 import webhook
 from roblox import Client
-import smtplib
 import pyttsx3
 from pbwrap import Pastebin
 from textblob import TextBlob
@@ -107,11 +106,6 @@ roblox = Client(Code(Codes.robloxtoken))
 
 # Discord Buttons
 button = DiscordComponents(client)
-
-# Email Client
-server = smtplib.SMTP("smtp.gmail.com", 587)
-server.starttls()
-server.login("frostbot023@gmail.com", password())
 
 # Pastebin Client
 pastebin = Pastebin(Code(Codes.pastebinapikey))
@@ -1512,23 +1506,6 @@ async def search(ctx, max_search, *, args):
 
 @search.error
 async def search_error(ctx, error):
-    if isinstance(error, commands.MissingRequiredArgument):
-        error = discord.Embed(
-            color=discord.Color.from_rgb(255,179,0)
-        )
-        error.set_author(name=f'**An error was found: Missing Argument.**', icon_url='https://images-ext-1.discordapp.net/external/tRyQekhx5OTGiDmVMdAVkAjWQHC_C5aqgP28EBD8HX4/https/img.icons8.com/fluent/96/unavailable.png')
-        await ctx.send(embed=error)
-
-
-@client.command(pass_context=True,name="email")
-async def email(ctx, email=None, *, message=None):
-    m = await ctx.send("Sending..")
-    server.sendmail("frostbot023@gmail.com", str(email), str(message))
-    await m.edit(f"Successfully sent message to {email}")
-
-
-@email.error
-async def email_error(ctx, error):
     if isinstance(error, commands.MissingRequiredArgument):
         error = discord.Embed(
             color=discord.Color.from_rgb(255,179,0)
