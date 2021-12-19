@@ -61,9 +61,8 @@ whodeleted = None
 def Code(code):
     return str(base64.b64decode(code))
 
-
 def password():
-    return Code(Codes.apakah)
+    return "Apakah?##5"
 
 def openFile(path):
     with open(path, 'r') as f:
