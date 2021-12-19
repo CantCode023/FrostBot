@@ -58,8 +58,12 @@ messagedeleted = None
 whodeleted = None
 
 
+def Code(code):
+    return str(base64.b64decode(code))
+
+
 def password():
-    return Codes.apakah
+    return Code(Codes.apakah)
 
 def openFile(path):
     with open(path, 'r') as f:
@@ -89,10 +93,6 @@ async def readURL(url):
             else:
                 data = io.BytesIO(await resp.read())
                 return data
-
-
-def Code(code):
-    return str(base64.b64decode(code))
 
 
 user_agent = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.159 Safari/537.36'
