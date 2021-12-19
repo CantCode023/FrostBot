@@ -1,0 +1,13 @@
+discord
+requests
+pillow
+discord-components
+imgurpython
+colorama
+roblox
+discord.py
+pyttsx3
+pbwrap
+textblob
+qrcode
+mojang

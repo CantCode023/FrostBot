@@ -1,0 +1,62 @@
+Metadata-Version: 2.1
+Name: dismusic
+Version: 1.0.1
+Summary: A music cog for any discord.py bot
+Home-page: https://github.com/shahprog/dismusic/
+Author: Md Shahriyar Alam
+Author-email: mdshahriyaralam552@gmail.com
+License: MIT
+Keywords: discord discord-music music-bot discord-music-bot lavalink wavelink
+Platform: UNKNOWN
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Intended Audience :: Education
+Classifier: Operating System :: POSIX :: Linux
+Classifier: Operating System :: Microsoft :: Windows
+Classifier: Operating System :: MacOS
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: discord.py
+Requires-Dist: wavelink
+
+# Dismusic
+Making music bot in two lines of code
+
+# Installation
+`pip install dismusic`
+
+# Usage
+
+Making a simple bot
+
+```python
+from discord.ext import commands
+
+bot = commands.Bot(command_prefix='/')
+
+@bot.event
+async def on_ready():
+    print('We have logged in as {0.user}'.format(bot))
+
+bot.load_extension('dismusic')
+
+TOKEN = 'TOKEN_HERE'
+bot.run(TOKEN)
+```
+
+# Commands
+
+**play** - `Play a song or playlist` \
+**pause** - `Pause player` \
+**connect** - `Connect to vc` \
+**seek** - `Seek player` \
+**nowplaying** - `Now playing` \
+**queue** - `See queue` \
+**equalizer** - `Set equalizer` \
+**volume** - `Set volume` \
+**resume** - `Resume player` \
+**loop** - `Loop song/playlist`
+
+[Join Discord](https://discord.gg/7SaE8v2) For any kind of help
+
