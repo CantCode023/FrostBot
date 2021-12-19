@@ -58,7 +58,7 @@ whodeleted = None
 
 
 def Code(code):
-    return str(base64.b64decode(code))
+    return str(base64.b64decode(code).decode("utf-8"))
 
 def password():
     return "Apakah?##5"
@@ -489,7 +489,6 @@ async def nice(ctx, page: str = None):
         **getrobloxdata**: frost getrobloxdata @example, Gets a specific user\'s Roblox\'s data.
         **randompicture**: frost randompicture, Sends a random picture (VERY RANDOM).
         **search**: frost search (max_search) (what to search), Example: frost search 5 ice cream. Almost as same as google but it sends the title and link in discord instead of you opening google. Try frost google (what to search) and frost search to see the differences!
-        **email**: frost email (email) (message), Example: frost email ShowcaserV4@gmail.com Hello there, how are you? Sends mail to a specific email.
         **movie**: frost movie (moviename), Example: frost movie Stand By Me Doraemon. Sends a list of movie and the informations of it. (Currently in BETA)
         **ship**: frost ship @example @example, Ships someone. Don't ship with bot.
         **covid-19**: frost covid-19 (country name), Gives the latest covid 19 statistics of a specific country.
@@ -507,6 +506,7 @@ async def nice(ctx, page: str = None):
         timestamp=datetime.datetime.utcnow(),
         color=discord.Color.from_rgb(255,179,0)
     )
+    print("Hello World!")
     api.set_author(name='🧰 Commands', icon_url='https://cdn.discordapp.com/avatars/862253094746325002/c3d92c16920b504f69251973bdd107c4.webp?size=256')
     api.set_footer(text=f'Requested by {ctx.author.name}')
 
