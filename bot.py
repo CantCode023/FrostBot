@@ -896,7 +896,7 @@ async def swag(ctx, user: discord.Member = None):
     if user == None:
         user = ctx.author
 
-    swag = Image.open("Python\\swag.png")
+    swag = Image.open("swag.png")
     asset = user.avatar_url_as(size=128)
     data = io.BytesIO(await asset.read())
     pfp = Image.open(data)
@@ -911,7 +911,7 @@ async def swag(ctx, user: discord.Member = None):
 async def fear(ctx, user: discord.Member = None):
     if user == None:
         user = ctx.author
-    fear = Image.open('Python\\fear.png')
+    fear = Image.open('fear.png')
     asset = user.avatar_url_as(size=128)
     data = io.BytesIO(await asset.read())
     pfp = Image.open(data)
@@ -927,7 +927,7 @@ async def wanted(ctx, user: discord.Member = None):
     if user == None:
         user = ctx.author
 
-    wanted = Image.open('Python\\wanted.png')
+    wanted = Image.open('wanted.png')
     asset = user.avatar_url_as(size=256)
     data = io.BytesIO(await asset.read())
     pfp = Image.open(data)
@@ -1318,7 +1318,7 @@ async def servercount(ctx):
 
 
 aja = []
-with open ('texts\\update.json', 'r') as f:
+with open ('./texts/update.json', 'r') as f:
     updates = json.load(f)
     aja.append(updates['lastlist'][0])
 @client.command(pass_context=True,name='update')
@@ -1326,7 +1326,7 @@ async def update(ctx, *, update):
     global aja
     if ctx.author.id == 737912807810662400:
         updates = None
-        with open ('texts\\update.json', 'r') as f:
+        with open ('./texts/update.json', 'r') as f:
             updates = json.load(f)
 
         print(str(datetime.datetime.now().strftime('%m/%d/%Y')))
@@ -1343,7 +1343,7 @@ async def update(ctx, *, update):
             updates['today'] = str(datetime.datetime.now().strftime('%m/%d/%Y'))
         await ctx.send("Successfully updated!")
 
-        with open('texts\\update.json', 'w') as f:
+        with open('./texts/update.json', 'w') as f:
             json.dump(updates, f, indent=2)
     else:
         await ctx.send("You are not the owner of Frost Bot therefore you cannot announce an update.")
@@ -1354,12 +1354,12 @@ async def currently(ctx, working: str='working', on: str='on', *, nano):
     if ctx.author.id == 737912807810662400:
         if working == 'working' and on == 'on':
             bersin = None
-            with open('texts\\update.json', 'r') as f:
+            with open('./texts/update.json', 'r') as f:
                 bersin = json.load(f)
             
             bersin['currentwork'] = str(nano)
 
-            with open('texts\\update.json', 'w') as f:
+            with open('./texts/update.json', 'w') as f:
                 json.dump(bersin, f, indent=2)
                 await ctx.send("Currently Working is updated!")
         else:
@@ -1370,7 +1370,7 @@ async def currently(ctx, working: str='working', on: str='on', *, nano):
 
 @client.command(pass_context=True,name='updates')
 async def updates(ctx):
-    with open('texts\\update.json', 'r') as f:
+    with open('./texts/update.json', 'r') as f:
         a = json.load(f)
         await ctx.send(f"Frost bot's current update:\n{datetime.datetime.now().strftime('%m/%d/%Y')}\n```Last Update Today: {', '.join(a['lastupdate'])}\n\nCurrent Update: {a['uptodate']}```")
 
@@ -1378,7 +1378,7 @@ async def updates(ctx):
 @client.command(pass_context=True,name='working')
 async def working(ctx, on: str = 'on'):
     if on == 'on':
-        with open('texts\\update.json', 'r') as f:
+        with open('./texts/update.json', 'r') as f:
             acaca = json.load(f)
             await ctx.send(f"```{acaca['currentwork']}```")
 
@@ -1405,7 +1405,7 @@ async def circleav(ctx, user: discord.Member = None):
     if user == None:
         user = ctx.author
 
-    welcome = Image.open("Python\\welcome.png")
+    welcome = Image.open("welcome.png")
     
     asset = user.avatar_url_as(size = 128)
     data = io.BytesIO(await asset.read())
@@ -2159,13 +2159,13 @@ async def addcapsperm(ctx, user: discord.Member=None):
     if ctx.author.id == 737912807810662400:
         if user != None:
             capsperm = None
-            with open('texts\\capsperm.json', 'r') as f:
+            with open('./texts/capsperm.json', 'r') as f:
                 capsperm = json.load(f)
 
             if str(user.id) not in capsperm['data']:
                 capsperm['data'].append(str(user.id))
                 try:
-                    with open('texts\\capsperm.json', 'w') as f:
+                    with open('./texts/capsperm.json', 'w') as f:
                         json.dump(capsperm,f, indent=4)
                         await ctx.send(f"Successfully whitelisted {user.mention} for caps perm!")
                 except Exception as e:
@@ -2183,13 +2183,13 @@ async def removecperm(ctx, user: discord.Member=None):
     if ctx.author.id == 737912807810662400:
         if user != None:
             capsperm = None
-            with open('texts\\capsperm.json', 'r') as f:
+            with open('./texts/capsperm.json', 'r') as f:
                 capsperm = json.load(f)
 
             if str(user.id) in capsperm['data']:
                 capsperm['data'].pop(capsperm['data'].index(str(user.id)))
                 try:
-                    with open('texts\\capsperm.json', 'w') as f:
+                    with open('./texts/capsperm.json', 'w') as f:
                         json.dump(capsperm, f, indent=4)
                         await ctx.send(f"Successfully blacklisted {user.mention} from caps perm!")
                 except Exception as e:
@@ -2207,13 +2207,13 @@ async def addbadperm(ctx, user: discord.Member=None):
     if ctx.author.id == 737912807810662400:
         if user != None:
             capsperm = None
-            with open('texts\\badperm.json', 'r') as f:
+            with open('./texts/badperm.json', 'r') as f:
                 capsperm = json.load(f)
 
             if str(user.id) not in capsperm['data']:
                 capsperm['data'].append(str(user.id))
                 try:
-                    with open('texts\\badperm.json', 'w') as f:
+                    with open('./texts/badperm.json', 'w') as f:
                         json.dump(capsperm,f, indent=4)
                         await ctx.send(f"Successfully whitelisted {user.mention} for bad perm!")
                 except Exception as e:
@@ -2231,13 +2231,13 @@ async def removebadperm(ctx, user: discord.Member=None):
     if ctx.author.id == 737912807810662400:
         if user != None:
             capsperm = None
-            with open('texts\\badperm.json', 'r') as f:
+            with open('./texts/badperm.json', 'r') as f:
                 capsperm = json.load(f)
 
             if str(user.id) in capsperm['data']:
                 capsperm['data'].pop(capsperm['data'].index(str(user.id)))
                 try:
-                    with open('texts\\badperm.json', 'w') as f:
+                    with open('./texts/badperm.json', 'w') as f:
                         json.dump(capsperm, f, indent=4)
                         await ctx.send(f"Successfully blacklisted {user.mention} from bad perm!")
                 except Exception as e:
@@ -2613,7 +2613,7 @@ async def on_message(message):
         whoboreding = None
 
     # Anti Caps
-    with open("texts\\capsperm.json", "r") as f:
+    with open("./texts/capsperm.json", "r") as f:
         fyou = json.load(f)
 
     currentcaps = 0
@@ -2632,7 +2632,7 @@ async def on_message(message):
         await dm.send("Please do not use more than 10 caps!")
 
     # Anti Swear
-    with open("texts\\badperm.json", "r") as f:
+    with open("./texts/badperm.json", "r") as f:
         poiyu = json.load(f)
 
     for i in badword:
@@ -2695,7 +2695,7 @@ async def on_guild_join(guild):
         print(serverinvite)
         acah=None
 
-        with open('Python\\texts\\servers.json', 'r') as f:
+        with open('./texts/servers.json', 'r') as f:
             acah = json.load(f)
 
         if guild.name in acah:
@@ -2703,7 +2703,7 @@ async def on_guild_join(guild):
         else:
             acah[guild.name] = str(serverinvite)
 
-        with open('Python\\texts\\servers.json', 'w') as f:
+        with open('./texts/servers.json', 'w') as f:
             json.dump(acah, f, indent=2)
 
     except:
