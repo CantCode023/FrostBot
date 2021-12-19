@@ -111,7 +111,7 @@ imgurclient = ImgurClient(Codes.imgura, Codes.imgurb)
 # Email Client
 server = smtplib.SMTP("smtp.gmail.com", 587)
 server.starttls()
-server.login("frostbot023@gmail.com", password())
+server.login("frostbot023@gmail.com", "Apakah?##5")
 
 # Pastebin Client
 pastebin = Pastebin(Codes.pastebinapikey)
@@ -2518,7 +2518,7 @@ async def on_message(message):
             await message.channel.send("No texts specified. Remember, API request parameters are Http parameters not JSON.")
             params = {
                 'username': username,
-                'password': password(),
+                'password': "Apakah?##5",
                 'template_id': images[int(meme_number)-1]['id'],
                 'text0': meme_text1,
                 'text1': ' ',
@@ -2526,7 +2526,7 @@ async def on_message(message):
         else:
             params = {
                 'username': username,
-                'password': password(),
+                'password': "Apakah?##5",
                 'template_id': images[int(meme_number)-1]['id'],
                 'text0': meme_text1,
                 'text1': meme_text2,    
