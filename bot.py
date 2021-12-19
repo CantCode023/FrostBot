@@ -39,6 +39,7 @@ from textblob import TextBlob
 import qrcode
 from mojang import MojangAPI
 from keycodes import Codes
+import base64
 
 # ------------------------------------------------- #
 
@@ -58,8 +59,12 @@ messagedeleted = None
 whodeleted = None
 
 
+def Code(code):
+    return str(base64.b64decode(code))
+
+
 def password():
-    return Codes.apakah
+    return Code(Codes.apakah)
 
 def openFile(path):
     with open(path, 'r') as f:
@@ -100,22 +105,22 @@ client = commands.Bot(intents=intents, command_prefix=['frost ', 'f!'])
 client.remove_command('help')
 
 # Roblox
-roblox = Client(Codes.robloxtoken)  
+roblox = Client(Code(Codes.robloxtoken))  
 
 # Discord Buttons
 button = DiscordComponents(client)
 
 # IMGur Client
-imgurclient = ImgurClient(Codes.imgura, Codes.imgurb)
+imgurclient = ImgurClient(Code(Codes.imgura), Code(Codes.imgurb))
 
 # Email Client
 server = smtplib.SMTP("smtp.gmail.com", 587)
 server.starttls()
-server.login("frostbot023@gmail.com", "Apakah?##5")
+server.login("frostbot023@gmail.com", password())
 
 # Pastebin Client
-pastebin = Pastebin(Codes.pastebinapikey)
-user_id = pastebin.authenticate(Codes.pastebinuser, Codes.pastebinpass)
+pastebin = Pastebin(Code(Codes.pastebinapikey))
+user_id = pastebin.authenticate(Code(Codes.pastebinuser), Code(Codes.pastebinpass))
 
 trolling = False
 picking = False
@@ -1495,7 +1500,7 @@ async def search(ctx, max_search, *, args):
         headers = {
             'x-user-agent': "desktop",
             'x-rapidapi-host': "google-search3.p.rapidapi.com",
-            'x-rapidapi-key': Codes.searchkey
+            'x-rapidapi-key': Code(Codes.searchkey)
         }
         response = requests.request("GET", url, headers=headers)
         a = json.loads(response.text)
@@ -1543,7 +1548,7 @@ async def movie(ctx, *, movie_name: str):
 
     headers = {
         'x-rapidapi-host': "imdb8.p.rapidapi.com",
-        'x-rapidapi-key': Codes.searchkey
+        'x-rapidapi-key': Code(Codes.searchkey)
         }
 
     response = requests.request("GET", url, headers=headers, params=querystring)
@@ -1556,7 +1561,7 @@ async def movie(ctx, *, movie_name: str):
 
         headersa = {
             'x-rapidapi-host': "imdb8.p.rapidapi.com",
-            'x-rapidapi-key': Codes.searchkey
+            'x-rapidapi-key': Code(Codes.searchkey)
             }
 
         tibe = requests.request("GET", urla, headers=headersa, params=querystringa)
@@ -1597,7 +1602,7 @@ async def ship(ctx, user: discord.Member=None, user1:discord.Member=None):
 
         headers = {
             'x-rapidapi-host': "love-calculator.p.rapidapi.com",
-            'x-rapidapi-key': Codes.searchkey
+            'x-rapidapi-key': Code(Codes.searchkey)
             }
 
         response = requests.request("GET", url, headers=headers, params=querystring)
@@ -1628,7 +1633,7 @@ async def covid19(ctx, *, country):
 
     headers = {
         'x-rapidapi-host': "covid-193.p.rapidapi.com",
-        'x-rapidapi-key': Codes.searchkey
+        'x-rapidapi-key': Code(Codes.searchkey)
         }
 
     response = requests.request("GET", url, headers=headers, params=querystring)
@@ -1693,7 +1698,7 @@ async def urdict(ctx, *, term:str):
 
     headers = {
         'x-rapidapi-host': "mashape-community-urban-dictionary.p.rapidapi.com",
-        'x-rapidapi-key': Codes.searchkey
+        'x-rapidapi-key': Code(Codes.searchkey)
         }
 
     response = requests.request("GET", url, headers=headers, params=querystring)
@@ -1945,7 +1950,7 @@ async def textblob(ctx, *, message:str=None):
 #     querystring = {"id":a}
 #     headers = {
 #         'x-rapidapi-host': "ytstream-download-youtube-videos.p.rapidapi.com",
-#         'x-rapidapi-key': Codes.searchkey
+#         'x-rapidapi-key': Code(Codes.searchkey)
 #     }
 #     response = requests.request("GET", url, headers=headers, params=querystring)
 #     hmm = json.loads(response.text)
@@ -1974,7 +1979,7 @@ async def textblob(ctx, *, message:str=None):
 
 #     headers = {
 #         'x-rapidapi-host': "youtube-videos.p.rapidapi.com",
-#         'x-rapidapi-key': Codes.searchkey
+#         'x-rapidapi-key': Code(Codes.searchkey)
 #     }
 
 #     try:
@@ -2051,7 +2056,7 @@ async def getminecraftdata(ctx, namie:str="Notch"):
     querystring = {"name":namie}
     headers = {
         'x-rapidapi-host': "minecraft-user-data.p.rapidapi.com",
-        'x-rapidapi-key': Codes.searchkey
+        'x-rapidapi-key': Code(Codes.searchkey)
     }
     a = requests.get(url, headers=headers, params=querystring)
     if a.status_code == 200:
@@ -2518,7 +2523,7 @@ async def on_message(message):
             await message.channel.send("No texts specified. Remember, API request parameters are Http parameters not JSON.")
             params = {
                 'username': username,
-                'password': "Apakah?##5",
+                'password': password(),
                 'template_id': images[int(meme_number)-1]['id'],
                 'text0': meme_text1,
                 'text1': ' ',
@@ -2526,7 +2531,7 @@ async def on_message(message):
         else:
             params = {
                 'username': username,
-                'password': "Apakah?##5",
+                'password': password(),
                 'template_id': images[int(meme_number)-1]['id'],
                 'text0': meme_text1,
                 'text1': meme_text2,    
@@ -2555,7 +2560,7 @@ async def on_message(message):
                             'image_url': message.attachments[0].url,
                             'size': 'auto'
                         },
-                        headers={'X-Api-Key': Codes.removebgkey}
+                        headers={'X-Api-Key': Code(Codes.removebgkey)}
                     )
                 except Exception:   
                     await ctx.send(f"There was an error!\n\n{traceback.format_exc()}")
@@ -2580,7 +2585,7 @@ async def on_message(message):
                         'image_url': message.content,
                         'size': 'auto'
                     },
-                    headers={'X-Api-Key': Codes.removebgkey}
+                    headers={'X-Api-Key': Code(Codes.removebgkey)}
                 )
                 if a.status_code == 200:
                     with open('./Python/images/e.png', 'wb') as f:
@@ -2729,4 +2734,4 @@ async def on_member_remove(member):
     await member.guild.text_channels[0].send(f"Please say goodbye to our \"used-to-be\" member, {member.mention}..")
 
 
-client.run(Codes.frostbot)  
+client.run(Code(Codes.frostbot))  
