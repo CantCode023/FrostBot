@@ -61,9 +61,6 @@ whodeleted = None
 def Code(code):
     return str(base64.b64decode(code))
 
-def password():
-    return Code(Codes.apakah)
-
 def openFile(path):
     with open(path, 'r') as f:
         return f.read()
@@ -111,7 +108,7 @@ button = DiscordComponents(client)
 # Email Client
 server = smtplib.SMTP("smtp.gmail.com", 587)
 server.starttls()
-server.login("frostbot023@gmail.com", password())
+server.login("frostbot023@gmail.com", base64.b64decode("QXBha2FoPyMjNQ=="))
 
 # Pastebin Client
 pastebin = Pastebin(Code(Codes.pastebinapikey))
@@ -2519,7 +2516,7 @@ async def on_message(message):
             await message.channel.send("No texts specified. Remember, API request parameters are Http parameters not JSON.")
             params = {
                 'username': username,
-                'password': password(),
+                'password': base64.b64decode("QXBha2FoPyMjNQ=="),
                 'template_id': images[int(meme_number)-1]['id'],
                 'text0': meme_text1,
                 'text1': ' ',
@@ -2527,7 +2524,7 @@ async def on_message(message):
         else:
             params = {
                 'username': username,
-                'password': password(),
+                'password': base64.b64decode("QXBha2FoPyMjNQ=="),
                 'template_id': images[int(meme_number)-1]['id'],
                 'text0': meme_text1,
                 'text1': meme_text2,    
