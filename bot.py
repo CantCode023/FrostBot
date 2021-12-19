@@ -61,7 +61,6 @@ whodeleted = None
 def Code(code):
     return str(base64.b64decode(code))
 
-
 def password():
     return Code(Codes.apakah)
 
@@ -1496,7 +1495,7 @@ async def search(ctx, max_search, *, args):
         headers = {
             'x-user-agent': "desktop",
             'x-rapidapi-host': "google-search3.p.rapidapi.com",
-            'x-rapidapi-key': Codes.searchkey
+            'x-rapidapi-key': Code(Codes.searchkey)
         }
         response = requests.request("GET", url, headers=headers)
         a = json.loads(response.text)
