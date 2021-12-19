@@ -1,0 +1,5 @@
+# Ignore keycodes.py
+keycodes.py
+
+# Ignore servers.json
+texts\servers.json

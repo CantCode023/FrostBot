@@ -553,7 +553,9 @@ async def nice(ctx, page: str = None):
         **buttons**: frost buttons, List of discord buttons.
         **report**: frost report @someone reason, Reports a specific user to the owner of Frost Bot (will be changed report to the owner of the group after frost bot's revamp)
         **randompicture**: frost randompicture, Sends a random picture.
-        **servercount**: frost servercount, Sends the number of how many servers frost bot have joined
+        **servercount**: frost servercount, Sends the number of how many servers frost bot have joined.
+        **flip**: frost flip, Flips the coin.
+        **sourcecode**: frost sourcecode, Source Code of Frost Bot.
         ''',
         timestamp=datetime.datetime.utcnow(),
         color=discord.Color.from_rgb(255,179,0)
