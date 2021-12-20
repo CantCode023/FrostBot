@@ -4,7 +4,7 @@ pillow
 discord-components
 imgurpython
 colorama
-roblox
+git+git://github.com/rbx-libdev/ro.py.git
 discord.py
 pyttsx3
 pbwrap

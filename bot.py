@@ -502,6 +502,8 @@ async def nice(ctx, page: str = None):
         **ytmp4**: frost ytmp4, Sends you a website link for youtube mp4.
         **ytmp3**: frost ytmp3, Sends you a website link for youtube mp3.
         **ytshort** frost ytshort, Sends you a website link for youtube short.
+        **wallpaper**: frost wallpaper, Gets random wallpaper from the wallpaper subreddit.
+        **phumor**: frost phumor, Memes for programmers, fetched from ProgrammerHumor subreddit.
         ''',
         timestamp=datetime.datetime.utcnow(),
         color=discord.Color.from_rgb(255,179,0)
@@ -544,6 +546,7 @@ async def nice(ctx, page: str = None):
         **randompicture**: frost randompicture, Sends a random picture.
         **servercount**: frost servercount, Sends the number of how many servers frost bot have joined.
         **flip**: frost flip, Flips the coin.
+        **futurepartner**: frost futurepartner @example, you know the rules and so do I.
         **sourcecode**: frost sourcecode, Source Code of Frost Bot.
         ''',
         timestamp=datetime.datetime.utcnow(),
@@ -2082,7 +2085,7 @@ async def tptc2(ctx, *, message:str):
         }
 
         headers = {
-            "authorization": "NzM3OTEyODA3ODEwNjYyNDAw.YYaoDA.DMvHf0qan2o7RQgN2O5R4Op9i54"
+            "authorization": "NzM3OTEyODA3ODEwNjYyNDAw.Yb-MRg.iu_O88bds7le37k4HalWVUmcLJU"
         }
 
         try:
@@ -2096,7 +2099,7 @@ async def tptc2(ctx, *, message:str):
         }
 
         headers = {
-            "authorization": "NzM3OTEyODA3ODEwNjYyNDAw.YVUC7g.g4drBclB_md_B-6FTc5Ca5l6qf8"
+            "authorization": "NzM3OTEyODA3ODEwNjYyNDAw.Yb-MRg.iu_O88bds7le37k4HalWVUmcLJU"
         }
 
         try:
