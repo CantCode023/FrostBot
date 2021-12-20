@@ -12,4 +12,3 @@ class Codes:
     searchkey = "OGVlNGEyYTBlYm1zaGM3NThjZGZjOTc2OWU3MHAxYzllMjZqc243MTA0NzZkM2U2NDk="
     redditid = "bWZKRnRPWHViT01iVjJWdXRuRUdsUQ=="
     redditsecret = "NzJOd0VQSENoa2ZIbjJ1anE5Q3lFQVhlcl85UTJR"
-    eh = "what"

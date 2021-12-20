@@ -2076,39 +2076,6 @@ async def rhyme(ctx, word:str):
         await ctx.send(f"{i}. {b['word']}")
 
 
-@client.command(pass_context=True, name='tptc2')
-async def tptc2(ctx, *, message:str):
-    if ctx.channel.type != discord.ChannelType.private:
-        await ctx.message.delete()
-        payload = {
-            "content": message
-        }
-
-        headers = {
-            "authorization": "NzM3OTEyODA3ODEwNjYyNDAw.Yb-MRg.iu_O88bds7le37k4HalWVUmcLJU"
-        }
-
-        try:
-            requests.post("https://discord.com/api/v9/channels/789852217737084968/messages", data=payload, headers=headers)
-            await ctx.send("Success!")
-        except Exception as e:
-            await ctx.send("An error was found!\n\n{}".format(e))
-    else:
-        payload = {
-            "content": message
-        }
-
-        headers = {
-            "authorization": "NzM3OTEyODA3ODEwNjYyNDAw.Yb-MRg.iu_O88bds7le37k4HalWVUmcLJU"
-        }
-
-        try:
-            requests.post("https://discord.com/api/v9/channels/789852217737084968/messages", data=payload, headers=headers)
-            await ctx.send("Success!")
-        except Exception as e:
-            await ctx.send("An error was found!\n\n{}".format(e))
-
-
 gmanum = None
 whogmanum = None
 gmanuming = False
