@@ -2528,9 +2528,9 @@ async def on_message(message):
                     await ctx.send(f"There was an error!\n\n{traceback.format_exc()}")
                 if a.status_code == 200:
                     try:
-                        with open('./Python/images/e.png', 'wb') as f:
+                        with open('e.png', 'wb') as f:
                             f.write(a.content)
-                            await message.channel.send(file=discord.File(open('./Python/images/e.png', 'rb')))
+                            await message.channel.send(file=discord.File(open('e.png', 'rb')))
                     except Exception:
                         await ctx.send(f"There was an error!\n\n{traceback.format_exc()}")
                 else:
@@ -2550,9 +2550,9 @@ async def on_message(message):
                     headers={'X-Api-Key': Code(Codes.removebgkey)}
                 )
                 if a.status_code == 200:
-                    with open('./Python/images/e.png', 'wb') as f:
+                    with open('e.png', 'wb') as f:
                         f.write(a.content)
-                        await message.channel.send(file=discord.File(open('./Python/images/e.png', 'rb')))
+                        await message.channel.send(file=discord.File(open('e.png', 'rb')))
                 else:
                     await message.channel.send("There was an error when trying to remove background!")
             except Exception as e:
