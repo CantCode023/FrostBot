@@ -34,7 +34,6 @@ pyparsing==3.0.6
 pypiwin32==223
 python-dateutil==2.8.2
 pyttsx3==2.90
-pywin32==302
 pywin32-ctypes==0.2.0
 qrcode==7.3.1
 readme-renderer==32.0
