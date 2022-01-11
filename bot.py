@@ -2359,13 +2359,16 @@ async def sourcecode(ctx):
 async def uwu(ctx, query: str):
     a = requests.get("https://wordsthatstartswith.herokuapp.com/wordsThatStartsWith?char=" + query).text
     b = json.loads(a)
-    await ctx.send(b['data'])
+    for i in b['amount']+1:
+        c = b['words'][i]
+        await ctx.send(f"{i}. {c}")
 
 
 @client.command(pass_context=True, name="getversion", aliases=["getver"])
 async def getversion(ctx):
-    with open("./currentVersion.txt", "r") as f:
-        await ctx.send(f)
+    a = openFile("currentVersion.txt")
+    await ctx.send(a)
+        
 
 
 boredtype = None
