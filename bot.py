@@ -256,7 +256,7 @@ async def massreact_error(ctx, error):
         await ctx.send("**ERROR: BAD ARGUMENT**")
 
 currentchannel = None
-@client.command(pass_context=True, name='dm')
+@client.command(pass_context=True, name='dm')   
 async def dm(ctx,  user: discord.User, *, message=None):
     global currentchannel
     currentchannel = int(ctx.message.channel.id)
@@ -2353,6 +2353,13 @@ async def sourcecode(ctx):
             ]
         ]
     )
+
+
+@client.command(pass_context=True, name="wordthatstartswith", aliases=["uwu"])
+async def uwu(ctx, query: str):
+    a = requests.get("https://wordsthatstartswith.herokuapp.com/wordsThatStartsWith?char=" + query).text
+    b = json.loads(a)
+    await ctx.send(b['data'])
 
 
 boredtype = None
