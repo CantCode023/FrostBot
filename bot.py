@@ -2362,6 +2362,12 @@ async def uwu(ctx, query: str):
     await ctx.send(b['data'])
 
 
+@client.command(pass_context=True, name="getversion", aliases=["getver"])
+async def getversion(ctx):
+    with open("./currentVersion.txt", "r") as f:
+        await ctx.send(f)
+
+
 boredtype = None
 isbirthday = False
 whenborn,borning = None,False
