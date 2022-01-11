@@ -2359,9 +2359,7 @@ async def sourcecode(ctx):
 async def uwu(ctx, query: str):
     a = requests.get("https://wordsthatstartswith.herokuapp.com/wordsThatStartsWith?char=" + query).text
     b = json.loads(a)
-    for i in b['amount']+1:
-        c = b['words'][i]
-        await ctx.send(f"{i}. {c}")
+    await ctx.send(b['data'].replace('[','').replace(']','').replace("'",'').replace(", ", "\n"))
 
 
 @client.command(pass_context=True, name="getversion", aliases=["getver"])
