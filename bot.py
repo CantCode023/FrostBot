@@ -2359,8 +2359,24 @@ async def sourcecode(ctx):
 async def uwu(ctx, query: str):
     a = requests.get("https://wordsthatstartswith.herokuapp.com/wordsThatStartsWith?char=" + query).text
     b = json.loads(a)
+    newList = []
+    for i in range(1,25):
+        newList.append(b['data'][i])
     try:
-        await ctx.send('\n'.join(b['data']))
+        await ctx.send('\n'.join(newList))
+    except Exception:
+        await ctx.send(traceback.format_exc())
+
+
+@client.command(pass_context=True, name="wordthatcontains", aliases=["uwu1"])
+async def uwu1(ctx, query: str):
+    a = requests.get("https://wordsthatstartswith.herokuapp.com/wordsThatContains?char=" + query).text
+    b = json.loads(a)
+    newList = []
+    for i in range(1,25):
+        newList.append(b['data'][i])
+    try:
+        await ctx.send('\n'.join(newList))
     except Exception:
         await ctx.send(traceback.format_exc())
 
