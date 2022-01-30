@@ -38,6 +38,7 @@ import qrcode
 from mojang import MojangAPI
 from keycodes import Codes
 import base64
+import pywhatkit
 
 # ------------------------------------------------- #
 
@@ -2008,11 +2009,12 @@ async def bored(ctx):
     whoboreding = ctx.author.id
 
 
-@client.command(pass_context=True, name='qr')
+@client.command(pass_context=True, name='down')
 async def qr(ctx, link:str="https://www.youtube.com/watch?v=QtBDL8EiNZo"):
     await ctx.message.delete()
     a = requests.get(link)
     if a.status_code == 200:
+        
         try:
             hm = qrcode.make(link)
             with BytesIO() as f:
@@ -2386,6 +2388,14 @@ async def getversion(ctx):
     a = openFile("currentVersion.txt")
     await ctx.send(a)
         
+itasing = False
+whoitasing = None
+@client.command(pass_context=True, name="itas", aliases=["imgtoascii"])
+async def itas(ctx):
+    global itasing, whoitasing
+    await ctx.send("Please send an image or link.")
+    itasing = True
+    whoitasing = ctx.author.id
 
 
 boredtype = None
@@ -2420,6 +2430,7 @@ async def on_message(message):
     global whoboreding
     global boredtype
     global gmanuming,gmanum,whogmanum,isbirthday,isbirthdaying,whenborn,borning
+    global itasing, whoitasing
     # Webhook use frost bot
     ctx = await client.get_context(message)
     if ctx.valid and message.author.id == 873923972490756146:
@@ -2674,7 +2685,63 @@ async def on_message(message):
         gmanuming,gmanum,whogmanum,isbirthday,isbirthdaying,whenborn,borning = False,None,None,False,False,None,False
     elif "yamete~" in message.content.lower():
         await message.reply("wtf")
+    elif itasing and whoitasing == message.author.id:
+        if message.attachments:
+            try:
+                try:
+                    link = message.attachments[0].url
 
+                    with open("ascii.png", "wb") as f:
+                        response = requests.get(link, stream=True)
+
+                        if not response.ok:
+                            await message.channel.send(response)
+
+                        for block in response.iter_content(1024):
+                            if not block:
+                                break
+                            
+                            f.write(block)
+
+                    pywhatkit.image_to_ascii_art("ascii.png", "ascii")
+                    await message.channel.send(file=discord.File(open("ascii.txt", "rb"), "ascii.txt"))
+                except Exception:
+                    await message.channel.send(traceback.format_exc())
+                    webhook.SendMessage(traceback.format_exc(), "https://discord.com/api/webhooks/937322346778333194/U6tNVAhdhib53w4Aew_mdkUTjMYmJAXpeK-ZvfOF-jmXMmV2Mf1Vrp80_V35j7Uoag15")
+            except Exception:
+                await message.channel.send(traceback.format_exc())
+                webhook.SendMessage(traceback.format_exc(), "https://discord.com/api/webhooks/937322346778333194/U6tNVAhdhib53w4Aew_mdkUTjMYmJAXpeK-ZvfOF-jmXMmV2Mf1Vrp80_V35j7Uoag15")
+            itasing = False
+            whoitasing = None
+        else:
+            try:
+                try:
+                    link = str(message.content)
+                    if ("<" and ">") in link:
+                        link = link.split("<")[1].split(">")[0]
+
+                    with open("ascii.png", "wb") as f:
+                        response = requests.get(link, stream=True)
+
+                        if not response.ok:
+                            await message.channel.send(response)
+
+                        for block in response.iter_content(1024):
+                            if not block:
+                                break
+                            
+                            f.write(block)
+
+                    pywhatkit.image_to_ascii_art("ascii.png", "ascii")
+                    await message.channel.send(file=discord.File(open("ascii.txt", "rb"), "ascii.txt"))
+                except Exception:
+                    await message.channel.send(traceback.format_exc())
+                    webhook.SendMessage(traceback.format_exc(), "https://discord.com/api/webhooks/937322346778333194/U6tNVAhdhib53w4Aew_mdkUTjMYmJAXpeK-ZvfOF-jmXMmV2Mf1Vrp80_V35j7Uoag15")
+            except Exception:
+                await message.channel.send(traceback.format_exc())
+                webhook.SendMessage(traceback.format_exc(), "https://discord.com/api/webhooks/937322346778333194/U6tNVAhdhib53w4Aew_mdkUTjMYmJAXpeK-ZvfOF-jmXMmV2Mf1Vrp80_V35j7Uoag15")
+            itasing = False
+            whoitasing = None
 
     # Process Commands
     await client.process_commands(message)
